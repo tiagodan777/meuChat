@@ -15,6 +15,10 @@ class ComposerStaticInitce559b9fbd0e097bccee77e6c3cc8be1
     );
 
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'TiagoDaniel\\WebSockets\\' => 23,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php83\\' => 23,
@@ -48,6 +52,10 @@ class ComposerStaticInitce559b9fbd0e097bccee77e6c3cc8be1
     );
 
     public static $prefixDirsPsr4 = array (
+        'TiagoDaniel\\WebSockets\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
         'Symfony\\Polyfill\\Php83\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php83',
@@ -98,8 +106,8 @@ class ComposerStaticInitce559b9fbd0e097bccee77e6c3cc8be1
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
