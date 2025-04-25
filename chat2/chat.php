@@ -11,7 +11,7 @@
     <label for="mensagem">Mensagem</label>
     <input type="text" name="mensagem" id="mensagem">
     <br>
-    <input type="button" value="Enviar">
+    <input type="button" value="Enviar" onclick="enviar()">
     <br><br>
     <span id="mensagem-chat"></span>
 
@@ -19,9 +19,29 @@
         const mensagemChat = window.document.querySelector('span#mensagem-chat')
         const ws = new WebSocket('ws://localhost:8080')
 
-        ws.onopen(
+        ws.onopen = (e) => (
             console.log('Conectado!')
         )
+
+        ws.onmessage = (mensagemRecebida) => {
+            let resultado = JSON.parse(mensagemRecebida.data)
+
+            mensagemChat.insertAdjacentHTML('beforeend', `${resultado.mensagem} <br>`)
+        }
+
+        const enviar = () => {
+            let mensagem = window.document.querySelector('input#mensagem')
+
+            let dados = {
+                mensagem: `${mensagem.value}`
+            }
+
+            ws.send(JSON.stringify(dados))
+
+            mensagemChat.insertAdjacentHTML('beforeend', `${mensagem.value} <br>`)
+
+            mensagem.value = ''
+        }
     </script>
 </body>
 </html>

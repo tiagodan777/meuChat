@@ -26,7 +26,7 @@ class SistemaChat implements MessageComponentInterface {
     {
         foreach ($this->client as $client) {
             if ($client != $conn) {
-                $conn->send($msg);
+                $client->send($msg);
             }
         }
     }
