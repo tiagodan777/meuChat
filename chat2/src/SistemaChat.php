@@ -41,6 +41,8 @@ class SistemaChat implements MessageComponentInterface {
         $this->client->attach($conn);
 
         echo "Nova conexão: {$conn->resourceId}";
+
+        $this->mandarMensagensATodos($conn);
     }
 
     public function onMessage(ConnectionInterface $conn, MessageInterface $msg)
@@ -74,5 +76,18 @@ class SistemaChat implements MessageComponentInterface {
         $statement = $this->pdo->prepare($sql);
         $statement->execute([$request['mensagem'], $request['usuarioId']]);
         return true;
+    }
+
+    public function mandarMensagensATodos($conn) {
+        $sql = "SELECT id, mensagem, usuario_id 
+                FROM mensagens;";
+        $statement = $this->pdo->query($sql);
+        $mensagens = $statement->fetchAll();
+
+        $response = [
+            'mensagens' => $mensagens, 
+        ];
+
+        $conn->send(json_encode($response));
     }
 }
