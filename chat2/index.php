@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <h1>Login</h1>
-    <span style="color: #ff0000;"><?= $msg ?></span><br><br>
+    <span style="color: #ff0000;"><?= ($msg) ?? '' ?></span><br><br>
     <form action="index.php" method="post">
         <label for="email">Email: </label>
         <input type="email" name="email" id="email"><br><br>

@@ -29,9 +29,13 @@ session_start();
         const mensagemChat = window.document.querySelector('span#mensagem-chat')
         const ws = new WebSocket('ws://localhost:8080')
 
-        ws.onopen = (e) => (
+        ws.onopen = (e) => {
             console.log('Conectado!')
-        )
+
+            let resultado = JSON.parse(e.data)
+
+            mensagemChat.insertAdjacentHTML('beforeend', `${resultado.usuarioNome}: ${resultado.mensagem} <br>`)
+        }
 
         ws.onmessage = (mensagemRecebida) => {
             let resultado = JSON.parse(mensagemRecebida.data)

@@ -42,7 +42,7 @@ class SistemaChat implements MessageComponentInterface {
 
         echo "Nova conexão: {$conn->resourceId}";
 
-        $this->mandarMensagensATodos($conn);
+        //$this->mandarMensagensATodos($conn);
     }
 
     public function onMessage(ConnectionInterface $conn, MessageInterface $msg)
